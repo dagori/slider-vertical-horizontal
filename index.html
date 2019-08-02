@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+    <link href="build/css/style.min.css" rel="preload" as="style">
+    <link href="build/js/script.min.js" rel="preload" as="script">
+    <link href="build/css/style.min.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="slider">
+      <div class="switcher-radio">
+        <input id="radio-switcher-1" type="radio" name="radio-switcher" value="1" checked>
+        <label class="switcher-radio__item switcher-radio__item--1" for="radio-switcher-1"></label>
+        <input id="radio-switcher-2" type="radio" name="radio-switcher" value="2">
+        <label class="switcher-radio__item switcher-radio__item--2" for="radio-switcher-2"></label>
+        <input id="radio-switcher-3" type="radio" name="radio-switcher" value="3">
+        <label class="switcher-radio__item switcher-radio__item--3" for="radio-switcher-3"></label>
+      </div>
+      <div class="vertical-container">
+        <div class="slide slide--1">
+          <span class="peak peak--1">
+            <object type="image/svg+xml" data="images/items/peak.svg" width="52.5"></object>
+          </span>
+          <span class="peak peak--2">
+            <object type="image/svg+xml" data="images/items/peak.svg" width="27"></object>
+          </span>
+          <span class="peak peak--3">
+            <object type="image/svg+xml" data="images/items/peak.svg" width="22.5"></object>
+          </span>
+          <span class="peak peak--4">
+            <object type="image/svg+xml" data="images/items/peak.svg" width="22.5"></object>
+          </span>
+          <h1 class="slide__main-title">Всегда ли цели терапии СД2<br> на поверхности?</h1>
+        </div>
+        <div class="slide slide--2">
+          <h2 class="slide__title">Основа терапии —<br> патогенез СД2</h2>
+        </div>
+        <div class="slide slide--3">
+          <div class="horizontal-container">
+            <div class="subslide subslide--1">
+              <h3 class="subslide__title">Звенья патогенеза СД2</h3>
+              <img class="subslide__schema subslide__schema--first" src="images/items/tab_1.svg" alt="Звенья патогенеза" width="578" height="auto">
+            </div>
+            <div class="subslide subslide--2">
+              <h3 class="subslide__title">Смертельный октет</h3>
+              <img class="subslide__schema subslide__schema--second" src="images/items/tab_2.svg" alt="Смертельный октет" width="700" height="auto">
+            </div>
+            <div class="subslide subslide--3">
+              <h3 class="subslide__title">Звенья патогенеза СД2</h3>
+              <img class="subslide__schema  subslide__schema--third" src="images/items/tab_3.svg" alt="Звенья патогенеза СД2" width="800" height="auto">
+            </div>
+          </div>
+          <div class="switcher-slider">
+            <div class="switcher-slider__scale">
+              <div class="switcher-slider__thumb"></div>
+            </div>
+            <span class="switcher-slider__date">1988</span>
+            <span class="switcher-slider__date">2009</span>
+            <span class="switcher-slider__date">2016</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="build/js/script.min.js"></script>
+  </body>
+</html>

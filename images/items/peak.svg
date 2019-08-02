@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 230 235">
+  <style type="text/css" media="screen">
+  <![CDATA[
+    .inner, .middle {
+      animation: resize 1.5s linear infinite;
+    }
+    .inner-2 {
+      animation: resize 1.5s 0.5s linear infinite;
+    }
+
+    .group-1 .middle {
+      animation: resize3 1s linear forwards;
+    }
+
+    @keyframes resize {
+     70% {
+      stroke-opacity: 1;
+     }
+     100% {
+      r: 110;
+      fill-opacity: 0;
+     }
+    }
+    @keyframes resize2 {
+      100% {
+        r: 110;
+        fill-opacity: 0;
+        stroke-opacity: 1;
+      }
+    }
+    @keyframes resize3 {
+      100% {
+        r: 110;
+        stroke-opacity: 0;
+      }
+    }
+   ]]>
+  </style>
+  <radialGradient id="centre">
+    <stop offset="70%" stop-color="rgb(222,121,27)" stop-opacity="1"/>
+    <stop offset="100%" stop-color="rgb(207,20,55)" stop-opacity="1"/>
+  </radialGradient>
+  <radialGradient id="middle">
+    <stop offset="1%" stop-color="rgb(222,121,27)" stop-opacity="0.16"/>
+    <stop offset="100%" stop-color="rgb(207,20,55)" stop-opacity="0.16"/>
+  </radialGradient>
+  <linearGradient id="line">
+    <stop  offset="0%" stop-color="rgb(222,121,27)" stop-opacity="1"/>
+    <stop  offset="100%" stop-color="rgb(207,20,55)" stop-opacity="1"/>
+  </linearGradient>
+  <g class="group-1">
+    <circle class="outer" cx="114" cy="120" r="110" fill="rgb(247, 139, 31)" fill-opacity="0.22" stroke-width="2px" stroke="url(#line)" stroke-dashoffset="300"/>
+    <circle class="middle" cx="114" cy="120" r="80" fill="url(#middle)" fill-opacity="0.22" stroke-width="2px" stroke="url(#line)"/>
+    <circle class="inner" cx="114" cy="120" r="33" fill="url(#centre)" fill-opacity="0.63"/>
+  </g>
+    <circle class="inner-2" cx="114" cy="120" r="0" fill="url(#centre)" stroke-width="2px" stroke="url(#line)" stroke-opacity="0" fill-opacity="0.63"/>
+</svg>
