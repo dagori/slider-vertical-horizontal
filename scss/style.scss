@@ -40,6 +40,7 @@ body {
   overflow-y: hidden;
   position: relative;
   background: black;
+  user-select: none;
 }
 
 body * {
@@ -60,10 +61,12 @@ h1, h2, h3, ul, li, a {
   margin: 0 auto;
   overflow: hidden;
   position: relative;
+  background: yellow;
 }
 
 .vertical-container {
   transition: transform 1s;
+  transform: translateY(0);
 }
 
 //Радиокнопки
@@ -96,6 +99,23 @@ h1, h2, h3, ul, li, a {
 }
 
 //Вертикальные слайды
+.next {
+  position: relative;
+}
+
+.next::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 170px;
+  background-image: url('../images/background/next.png');
+  background-position: center bottom;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
 
 .slide {
   height: 100vh;
@@ -106,9 +126,8 @@ h1, h2, h3, ul, li, a {
 }
 
 .slide--1 {
-  background-image: url('../images/background/next.png'),
-                    url('../images/background/sea-1.jpg');
-  background-size: contain, 100% 100vh;
+  background-image: url('../images/background/sea-1.jpg');
+  background-size: 100% 100vh;
   background-position: center bottom, center;
   position: relative;
 }

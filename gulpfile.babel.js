@@ -12,6 +12,7 @@ const svgSprite = require('gulp-svg-sprite');
 const plumber = require('gulp-plumber');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
+const sourcemaps = require('gulp-sourcemaps');
 
 const config = {
   shape: {
@@ -57,14 +58,16 @@ function styles() {
 }
 
 function scripts() {
-  return src('js/*.js', { sourcemaps: true })
+  return src('js/*.js')
+  .pipe(sourcemaps.init())
   .pipe(plumber())
   .pipe(babel({
     presets: ['@babel/env']
   }))
   .pipe(uglify())
   .pipe(rename({ extname: '.min.js' }))
-  .pipe(dest('build/js'), { sourcemaps: true })
+  .pipe(sourcemaps.write())
+  .pipe(dest('build/js'))
   .pipe(browserSync.stream())
 }
 
