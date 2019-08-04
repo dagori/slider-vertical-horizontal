@@ -61,11 +61,10 @@ h1, h2, h3, ul, li, a {
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  background: yellow;
 }
 
 .vertical-container {
-  transition: transform 1s;
+  transition: transform 0.5s;
   transform: translateY(0);
 }
 
@@ -121,7 +120,6 @@ h1, h2, h3, ul, li, a {
   height: 100vh;
   background-repeat: no-repeat;
   overflow: hidden;
-  outline: 1px solid red;
   border: 1px solid transparent;
 }
 
@@ -188,7 +186,8 @@ h1, h2, h3, ul, li, a {
   background-image: url('../images/background/ice-2.png'),
                     url('../images/background/sea-2.jpg');
   background-size: contain, 100% 100vh;
-  background-position: center;
+  background-position: center 50%, center;
+  transition: background-position 0.7s linear;
 }
 
 .slide--3 {

@@ -72,13 +72,19 @@ function moveVerticalSlides(newIndex) {
   if(!currentIndex) {
     currentIndex = 0;
     vertical.children[0].classList.remove('next');
+    vertical.children[1].style.backgroundPosition = 'center 30%, center';
   }
   var position = vertical.children[currentIndex].offsetHeight * newIndex;
   vertical.style.transform = `translateY(${-position}px)`;
+  if(currentIndex === 2) {
+    vertical.children[1].style.backgroundPosition = 'center 50%, center';
+  }
   currentIndex = newIndex;
   if(!newIndex) {
     vertical.children[0].classList.add('next');
   }
+
+//  console.log('2было:' + currentIndex, '2стало:' + newIndex);
 };
 
 
@@ -93,6 +99,9 @@ vertical.addEventListener('mousedown', (e) => {
     if(Math.abs(diff) < 50) return;
   });
   vertical.addEventListener('mouseup', () => {
+    // if(slideIndex === 2) {
+    //   vertical.children[1].style.backgroundPosition = 'center 50%, center';
+    // }
     if(diff < 0 && slideIndex !== 0) {
       moveVerticalSlides(slideIndex - 1);
       radioItem[slideIndex - 1].checked = true;
