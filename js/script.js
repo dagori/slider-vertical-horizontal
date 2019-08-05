@@ -6,10 +6,14 @@ const radio = document.querySelector('.switcher-radio');
 const radioItem = radio.querySelectorAll('input');
 const scale = document.querySelector('.switcher-slider__scale');
 const thumb = document.querySelector('.switcher-slider__thumb');
+var currentIndex;
 horizontal.style.width = (parseFloat(getComputedStyle(slider).width) * horizontal.children.length) + 'px';
+
 document.ondragstart = function() {
   return false;
 };
+
+// Получить координаты относительно спозиционированного элемента
 function getCoords(elem) {
   var coords = elem.getBoundingClientRect();
   return {
@@ -19,6 +23,8 @@ function getCoords(elem) {
     bottom: coords.bottom + pageYOffset
   }
 }
+
+// Передвинуть горизонтальный слайдер
 function moveHorizontalSlides() {
   var currentPos = parseFloat(getComputedStyle(thumb).left);
   var width = scale.offsetWidth;
@@ -49,24 +55,16 @@ thumb.onmousedown = function(e) {
   }
   document.onmouseup = function() {
     document.onmousemove = null;
-    thumb.onmouseup = null; //************
+    thumb.onmouseup = null;
     thumb.style.cursor = 'grab';
   }
-
 }
-var currentIndex;
+
+//Передвинуть вертикальный слайдер
 radio.addEventListener('change', (e) => {
   var nextRadioIndex = Array.from(radioItem).indexOf(e.target);
   moveVerticalSlides(nextRadioIndex);
 });
-
-
-
-
-
-
-
-
 
 function moveVerticalSlides(newIndex) {
   if(!currentIndex) {
@@ -76,17 +74,14 @@ function moveVerticalSlides(newIndex) {
   }
   var position = vertical.children[currentIndex].offsetHeight * newIndex;
   vertical.style.transform = `translateY(${-position}px)`;
-  if(currentIndex === 2) {
+  if(currentIndex === 2 && newIndex === 1) {
     vertical.children[1].style.backgroundPosition = 'center 50%, center';
   }
   currentIndex = newIndex;
   if(!newIndex) {
     vertical.children[0].classList.add('next');
   }
-
-//  console.log('2было:' + currentIndex, '2стало:' + newIndex);
 };
-
 
 vertical.addEventListener('mousedown', (e) => {
   var slide = e.target.closest('.slide');
@@ -96,12 +91,9 @@ vertical.addEventListener('mousedown', (e) => {
   var start = e.pageY;
   vertical.addEventListener('mousemove', (e) => {
     diff = start - e.pageY;
-    if(Math.abs(diff) < 50) return;
+    if(Math.abs(diff) < 100) return;
   });
   vertical.addEventListener('mouseup', () => {
-    // if(slideIndex === 2) {
-    //   vertical.children[1].style.backgroundPosition = 'center 50%, center';
-    // }
     if(diff < 0 && slideIndex !== 0) {
       moveVerticalSlides(slideIndex - 1);
       radioItem[slideIndex - 1].checked = true;
