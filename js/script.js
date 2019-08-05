@@ -13,7 +13,6 @@ document.ondragstart = function() {
   return false;
 };
 
-// Получить координаты относительно спозиционированного элемента
 function getCoords(elem) {
   var coords = elem.getBoundingClientRect();
   return {
@@ -70,7 +69,7 @@ function moveVerticalSlides(newIndex) {
   if(!currentIndex) {
     currentIndex = 0;
     vertical.children[0].classList.remove('next');
-    vertical.children[1].style.backgroundPosition = 'center 30%, center';
+    vertical.children[1].style.backgroundPosition = 'center 20%, center';
   }
   var position = vertical.children[currentIndex].offsetHeight * newIndex;
   vertical.style.transform = `translateY(${-position}px)`;

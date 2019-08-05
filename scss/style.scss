@@ -56,8 +56,8 @@ h1, h2, h3, ul, li, a {
 
 .slider {
   width: 1024px;
-  height: 100vh;
-  margin: 0 auto;
+  height: 768px;
+  margin: 50px auto;
   overflow: hidden;
   position: relative;
 }
@@ -105,7 +105,7 @@ h1, h2, h3, ul, li, a {
   position: absolute;
   content: '';
   width: 100%;
-  height: 170px;
+  height: 100px;
   background-image: url('../images/background/next.png');
   background-position: center bottom;
   background-size: 100%;
@@ -116,15 +116,14 @@ h1, h2, h3, ul, li, a {
 }
 
 .slide {
-  height: 100vh;
+  height: 768px;
   background-repeat: no-repeat;
   overflow: hidden;
-  border: 1px solid transparent;
 }
 
 .slide--1 {
   background-image: url('../images/background/sea-1.jpg');
-  background-size: 100% 100vh;
+  background-size: 100% 115%;
   background-position: center bottom, center;
   position: relative;
 }
@@ -142,8 +141,8 @@ h1, h2, h3, ul, li, a {
 }
 
 .peak--1 {
-  left: 55%;
-  top: 33%;
+  left: 562px;
+  top: 182px;
   &::before {
     content: 'Цель по HbA1c';
     top: 19px;
@@ -152,8 +151,8 @@ h1, h2, h3, ul, li, a {
 }
 
 .peak--2 {
-  left: 26.5%;
-  top: 55%;
+  left: 275px;
+  top: 375px;
   &::before {
     content: 'Гипогликемия';
     top: -30px;
@@ -162,8 +161,8 @@ h1, h2, h3, ul, li, a {
 }
 
 .peak--3 {
-  left: 46.5%;
-  top: 69%;
+  left: 480px;
+  top: 490px;
   &::before {
     content: 'Осложнения СД';
     top: -30px;
@@ -172,8 +171,8 @@ h1, h2, h3, ul, li, a {
 }
 
 .peak--4 {
-  left: 80%;
-  top: 67%;
+  left: 815px;
+  top: 480px;
   &::before {
     content: 'СС риски';
     top: -30px;
@@ -184,14 +183,14 @@ h1, h2, h3, ul, li, a {
 .slide--2 {
   background-image: url('../images/background/ice-2.png'),
                     url('../images/background/sea-2.jpg');
-  background-size: contain, 100% 100vh;
-  background-position: center 50%, center;
+  background-size: contain, 100%;
+  background-position: center 40%, center;
   transition: background-position 0.7s linear;
 }
 
 .slide--3 {
   background-image: url('../images/background/sea-3.jpg');
-  background-size: 100% 100vh;
+  background-size: 100%;
   background-position: center;
   position: relative;
 }
@@ -201,7 +200,7 @@ h1, h2, h3, ul, li, a {
   font-weight: 400;
   font-size: 50px;
   color: #0d319c;
-  margin: 10% 0 0 128px;
+  margin: 80px 60px;
 }
 
 .slide__title {
@@ -222,7 +221,7 @@ h1, h2, h3, ul, li, a {
   justify-content: space-between;
   align-content: space-between;
   position: absolute;
-  bottom: 15%;
+  bottom: 90px;
   left: 50%;
   transform: translateX(-320px);
 }
