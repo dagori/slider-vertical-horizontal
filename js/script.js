@@ -6,7 +6,7 @@ const radio = document.querySelector('.switcher-radio');
 const radioItem = radio.querySelectorAll('input');
 const scale = document.querySelector('.switcher-slider__scale');
 const thumb = document.querySelector('.switcher-slider__thumb');
-var currentIndex;
+var currentIndex = 0;
 horizontal.style.width = (parseFloat(getComputedStyle(slider).width) * horizontal.children.length) + 'px';
 
 document.ondragstart = function() {
@@ -67,12 +67,12 @@ radio.addEventListener('change', (e) => {
 
 function moveVerticalSlides(newIndex) {
   if(!currentIndex) {
-    currentIndex = 0;
     vertical.children[0].classList.remove('next');
     vertical.children[1].style.backgroundPosition = 'center 20%, center';
   }
   var position = vertical.children[currentIndex].offsetHeight * newIndex;
   vertical.style.transform = `translateY(${-position}px)`;
+  console.log(currentIndex, newIndex);
   if(currentIndex === 2 && newIndex === 1) {
     vertical.children[1].style.backgroundPosition = 'center 50%, center';
   }
@@ -93,6 +93,7 @@ vertical.addEventListener('mousedown', (e) => {
     if(Math.abs(diff) < 100) return;
   });
   vertical.addEventListener('mouseup', () => {
+    if(!slide || e.target.closest('.switcher-slider') || e.target.closest('.switcher-radio')) return;
     if(diff < 0 && slideIndex !== 0) {
       moveVerticalSlides(slideIndex - 1);
       radioItem[slideIndex - 1].checked = true;
