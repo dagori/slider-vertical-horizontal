@@ -115,6 +115,7 @@ h1, h2, h3, ul, li, a {
 
 .slide {
   height: 768px;
+  background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -138,7 +139,7 @@ h1, h2, h3, ul, li, a {
 
 .peak--1 {
   left: 562px;
-  top: 182px;
+  top: 250px;
   &::before {
     content: 'Цель по HbA1c';
     top: 19px;
@@ -148,7 +149,7 @@ h1, h2, h3, ul, li, a {
 
 .peak--2 {
   left: 275px;
-  top: 375px;
+  top: 420px;
   &::before {
     content: 'Гипогликемия';
     top: -30px;
@@ -157,8 +158,8 @@ h1, h2, h3, ul, li, a {
 }
 
 .peak--3 {
-  left: 480px;
-  top: 490px;
+  left: 475px;
+  top: 530px;
   &::before {
     content: 'Осложнения СД';
     top: -30px;
@@ -167,8 +168,8 @@ h1, h2, h3, ul, li, a {
 }
 
 .peak--4 {
-  left: 815px;
-  top: 480px;
+  left: 820px;
+  top: 510px;
   &::before {
     content: 'СС риски';
     top: -30px;
@@ -254,6 +255,7 @@ h1, h2, h3, ul, li, a {
 .subslide {
   width: 1024px;
   height: inherit;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
