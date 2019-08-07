@@ -106,3 +106,28 @@ vertical.addEventListener('mousedown', (e) => {
     vertical.mouseup = null;
   });
 });
+
+vertical.addEventListener('touchstart', (e) => {
+  var slide = e.target.closest('.slide');
+  if(!slide || e.target.closest('.switcher-slider') || e.target.closest('.switcher-radio')) return;
+  var slideIndex = Array.from(vertical.children).indexOf(slide);
+  var diff;
+  var start = e.pageY;
+  vertical.addEventListener('touchmove', (e) => {
+    diff = start - e.pageY;
+    if(Math.abs(diff) < 100) return;
+  });
+  vertical.addEventListener('touchend', () => {
+    if(!slide || e.target.closest('.switcher-slider') || e.target.closest('.switcher-radio')) return;
+    if(diff < 0 && slideIndex !== 0) {
+      moveVerticalSlides(slideIndex - 1);
+      radioItem[slideIndex - 1].checked = true;
+    }
+    if(diff > 0 && slideIndex !== vertical.children.length - 1) {
+      moveVerticalSlides(slideIndex + 1);
+      radioItem[slideIndex + 1].checked = true;
+    }
+    vertical.ontouchmove = null;
+    vertical.ontouchend = null;
+  });
+});
