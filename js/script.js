@@ -73,7 +73,7 @@ function moveVerticalSlides(newIndex) {
   var position = vertical.children[currentIndex].offsetHeight * newIndex;
   vertical.style.transform = `translateY(${-position}px)`;
   console.log(currentIndex, newIndex);
-  if(currentIndex === 2 && newIndex === 1) {
+  if(currentIndex === 2) {
     vertical.children[1].style.backgroundPosition = 'center 50%, center';
   }
   currentIndex = newIndex;
@@ -108,16 +108,19 @@ vertical.addEventListener('mousedown', (e) => {
 });
 
 vertical.addEventListener('touchstart', (e) => {
+  e.stopPropagation();
   var slide = e.target.closest('.slide');
   if(!slide || e.target.closest('.switcher-slider') || e.target.closest('.switcher-radio')) return;
   var slideIndex = Array.from(vertical.children).indexOf(slide);
   var diff;
   var start = e.pageY;
   vertical.addEventListener('touchmove', (e) => {
+    e.stopPropagation();
     diff = start - e.pageY;
     if(Math.abs(diff) < 100) return;
   });
   vertical.addEventListener('touchend', () => {
+    e.stopPropagation();
     if(!slide || e.target.closest('.switcher-slider') || e.target.closest('.switcher-radio')) return;
     if(diff < 0 && slideIndex !== 0) {
       moveVerticalSlides(slideIndex - 1);
