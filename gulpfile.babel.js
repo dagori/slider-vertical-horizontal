@@ -93,7 +93,7 @@ function images() {
         ]
       }),
       imagemin.jpegtran({progressive: true}),
-      imagemin.optipng({optimizationLevel: 5})
+      imagemin.optipng({optimizationLevel: 7})
     ]))
     .pipe(dest('build/images'))
 }

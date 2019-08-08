@@ -1,35 +1,26 @@
 @font-face {
   font-family: 'GothamPro';
-  src: url('../fonts/GothamPro.eot?') format("eot"),
-       url('../fonts/GothamPro.woff') format("woff");
-  font-weight: 400;//regular
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'GothamPro';
-  src: url('../fonts/GothamPro-Light.eot?') format("eot"),
-       url('../fonts/GothamPro-Light.woff') format("woff");
-  font-weight: 300;	//Light;
-  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/GothamPro.woff') format("woff");
+  font-display: fallback;
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('../fonts/Lato-Medium.eot?') format("eot"),
-       url('../fonts/Lato-Medium.woff') format("woff");
+  font-style: normal;
   font-weight: 600;
-  font-style: normal;
+  src: url('../fonts/Lato-Medium.woff') format("woff");
+  font-display: fallback;
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('../fonts/Lato-Regular.eot?') format("eot"),
-       url('../fonts/Lato-Regular.woff') format("woff");
-  font-weight: 400;//regular
   font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Lato-Regular.woff') format("woff");
+  font-display: fallback;
 }
-
 
 body {
   width: 100%;

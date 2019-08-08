@@ -59,6 +59,18 @@ thumb.onmousedown = function(e) {
   }
 }
 
+document.onkeypress = function(e) {
+  if(!thumb.focused) return;
+
+  var step = scale.offsetWidth/3;
+  if(e.keyCode === 37) {
+
+  }
+  if(e.keyCode === 39) {
+    
+  }
+}
+
 //Передвинуть вертикальный слайдер
 radio.addEventListener('change', (e) => {
   var nextRadioIndex = Array.from(radioItem).indexOf(e.target);
@@ -76,10 +88,10 @@ function moveVerticalSlides(newIndex) {
   if(currentIndex === 2) {
     vertical.children[1].style.backgroundPosition = 'center 50%, center';
   }
-  currentIndex = newIndex;
   if(!newIndex) {
     vertical.children[0].classList.add('next');
   }
+  currentIndex = newIndex;
 };
 
 vertical.addEventListener('mousedown', (e) => {
@@ -93,7 +105,7 @@ vertical.addEventListener('mousedown', (e) => {
     if(Math.abs(diff) < 100) return;
   });
   vertical.addEventListener('mouseup', () => {
-    if(!slide || e.target.closest('.switcher-slider') || e.target.closest('.switcher-radio')) return;
+    if(!slide) return;
     if(diff < 0 && slideIndex !== 0) {
       moveVerticalSlides(slideIndex - 1);
       radioItem[slideIndex - 1].checked = true;
