@@ -26,7 +26,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: "GothamPro", sans-serif;
+  font-family: "GothamPro", Arial, sans-serif;
   overflow-y: hidden;
   position: relative;
   background: black;
@@ -55,6 +55,7 @@ h1, h2, h3, ul, li, a {
 .vertical-container {
   transition: transform 0.5s;
   transform: translateY(0);
+  background-image: url('../images/background/bg-sea.jpg');
 }
 
 //Радиокнопки
@@ -112,7 +113,6 @@ h1, h2, h3, ul, li, a {
 }
 
 .slide--1 {
-  background-image: url('../images/background/sea-1.jpg');
   position: relative;
 }
 
@@ -169,13 +169,11 @@ h1, h2, h3, ul, li, a {
 }
 
 .slide--2 {
-  background-image: url('../images/background/ice-2.png'),
-                    url('../images/background/sea-2.jpg');
+  background-image: url('../images/background/ice-2.png');
   transition: background-position 0.7s linear;
 }
 
 .slide--3 {
-  background-image: url('../images/background/sea-3.jpg');
   position: relative;
 }
 
