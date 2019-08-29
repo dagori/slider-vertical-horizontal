@@ -2,6 +2,7 @@
 const slider = document.querySelector('.slider');
 const vertical = document.querySelector('.vertical-container');
 const horizontal = document.querySelector('.horizontal-container');
+const vericalSlides = vertical.querySelectorAll('.slide');
 const radio = document.querySelector('.switcher-radio');
 const radioItem = radio.querySelectorAll('input');
 const scale = document.querySelector('.switcher-slider__scale');
@@ -59,17 +60,17 @@ thumb.onmousedown = function(e) {
   }
 }
 
-document.onkeypress = function(e) {
-  if(!thumb.focused) return;
-
-  var step = scale.offsetWidth/3;
-  if(e.keyCode === 37) {
-
-  }
-  if(e.keyCode === 39) {
-    
-  }
-}
+// document.onkeypress = function(e) {
+//   if(!thumb.focused) return;
+//
+//   var step = scale.offsetWidth/3;
+//   if(e.keyCode === 37) {
+//
+//   }
+//   if(e.keyCode === 39) {
+//
+//   }
+// }
 
 //Передвинуть вертикальный слайдер
 radio.addEventListener('change', (e) => {
@@ -79,25 +80,25 @@ radio.addEventListener('change', (e) => {
 
 function moveVerticalSlides(newIndex) {
   if(!currentIndex) {
-    vertical.children[0].classList.remove('next');
-    vertical.children[1].style.backgroundPosition = 'center 20%, center';
+    vericalSlides[0].classList.remove('next');
+    vericalSlides[1].style.backgroundPosition = 'center 20%, center';
   }
-  var position = vertical.children[currentIndex].offsetHeight * newIndex;
+  var position = vericalSlides[currentIndex].offsetHeight * newIndex;
   vertical.style.transform = `translateY(${-position}px)`;
   console.log(currentIndex, newIndex);
   if(currentIndex === 2) {
-    vertical.children[1].style.backgroundPosition = 'center 50%, center';
+    vericalSlides[1].style.backgroundPosition = 'center 50%, center';
   }
   if(!newIndex) {
-    vertical.children[0].classList.add('next');
+    vericalSlides[0].classList.add('next');
   }
   currentIndex = newIndex;
 };
 
 vertical.addEventListener('mousedown', (e) => {
   var slide = e.target.closest('.slide');
-  if(!slide || e.target.closest('.switcher-slider') || e.target.closest('.switcher-radio')) return;
-  var slideIndex = Array.from(vertical.children).indexOf(slide);
+  if(!slide) return;
+  //var slideIndex = Array.from(vericalSlides).indexOf(slide);
   var diff;
   var start = e.pageY;
   vertical.addEventListener('mousemove', (e) => {
@@ -106,15 +107,16 @@ vertical.addEventListener('mousedown', (e) => {
   });
   vertical.addEventListener('mouseup', () => {
     if(!slide) return;
-    if(diff < 0 && slideIndex !== 0) {
-      moveVerticalSlides(slideIndex - 1);
-      radioItem[slideIndex - 1].checked = true;
+    if(diff < 0 && currentIndex !== 0) {
+      radioItem[currentIndex - 1].checked = true;
+      moveVerticalSlides(currentIndex - 1);
     }
-    if(diff > 0 && slideIndex !== vertical.children.length - 1) {
-      moveVerticalSlides(slideIndex + 1);
-      radioItem[slideIndex + 1].checked = true;
+    if(diff > 0 && currentIndex !== vericalSlides.length - 1) {
+      radioItem[currentIndex + 1].checked = true;
+      moveVerticalSlides(currentIndex + 1);
     }
     vertical.onmousemove = null;
     vertical.mouseup = null;
+    start = null;
   });
 });

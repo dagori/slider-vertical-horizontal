@@ -56,6 +56,7 @@ h1, h2, h3, ul, li, a {
   transition: transform 0.5s;
   transform: translateY(0);
   background-image: url('../images/background/bg-sea.jpg');
+  position: relative;
 }
 
 //Радиокнопки
@@ -87,6 +88,45 @@ h1, h2, h3, ul, li, a {
   display: none;
 }
 
+//Ползунок
+.switcher-slider {
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-320px);
+  z-index: 10;
+}
+
+.switcher-slider__scale {
+  width: 640px;
+  height: 17px;
+  background: rgba(255, 255, 255, .3);
+  border: 1px solid rgba(6, 14, 31, .3);
+}
+
+.switcher-slider__thumb {
+  width: 44px;
+  height: 55px;
+  position: relative;
+  top: -20px;
+  background-image: url('../images/items/thumb.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: grab;
+}
+
+.switcher-slider__date {
+  color: #ffffff;
+  font-family: 'GothamPro', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
 //Вертикальные слайды
 .next {
   position: relative;
@@ -106,7 +146,8 @@ h1, h2, h3, ul, li, a {
 }
 
 .slide {
-  height: 768px;
+//  height: 768px;
+  height: 100vh;
   background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -173,10 +214,6 @@ h1, h2, h3, ul, li, a {
   transition: background-position 0.7s linear;
 }
 
-.slide--3 {
-  position: relative;
-}
-
 .slide__main-title {
   font-family: 'GothamPro', sans-serif;
   font-weight: 400;
@@ -192,45 +229,6 @@ h1, h2, h3, ul, li, a {
   color: #ffffff;
   text-align: center;
   margin: 200px auto 0;
-}
-
-//Ползунок
-
-.switcher-slider {
-  height: 80px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
-  position: absolute;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-320px);
-}
-
-.switcher-slider__scale {
-  width: 640px;
-  height: 17px;
-  background: rgba(255, 255, 255, .3);
-  border: 1px solid rgba(6, 14, 31, .3);
-}
-
-.switcher-slider__thumb {
-  width: 44px;
-  height: 55px;
-  position: relative;
-  top: -20px;
-  background-image: url('../images/items/thumb.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: grab;
-}
-
-.switcher-slider__date {
-  color: #ffffff;
-  font-family: 'GothamPro', sans-serif;
-  font-size: 20px;
-  font-weight: 400;
 }
 
 //Горизонтальные слайды
