@@ -98,7 +98,7 @@ function moveVerticalSlides(newIndex) {
 vertical.addEventListener('mousedown', (e) => {
   var slide = e.target.closest('.slide');
   if(!slide) return;
-  //var slideIndex = Array.from(vericalSlides).indexOf(slide);
+  var slideIndex = Array.from(vericalSlides).indexOf(slide);
   var diff;
   var start = e.pageY;
   vertical.addEventListener('mousemove', (e) => {
@@ -107,16 +107,15 @@ vertical.addEventListener('mousedown', (e) => {
   });
   vertical.addEventListener('mouseup', () => {
     if(!slide) return;
-    if(diff < 0 && currentIndex !== 0) {
-      radioItem[currentIndex - 1].checked = true;
-      moveVerticalSlides(currentIndex - 1);
+    if(diff < 0 && slideIndex !== 0) {
+      moveVerticalSlides(slideIndex - 1);
+      radioItem[slideIndex - 1].checked = true;
     }
-    if(diff > 0 && currentIndex !== vericalSlides.length - 1) {
-      radioItem[currentIndex + 1].checked = true;
-      moveVerticalSlides(currentIndex + 1);
+    if(diff > 0 && slideIndex !== vericalSlides.length - 1) {
+      moveVerticalSlides(slideIndex + 1);
+      radioItem[slideIndex + 1].checked = true;
     }
     vertical.onmousemove = null;
     vertical.mouseup = null;
-    start = null;
   });
 });
