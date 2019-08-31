@@ -112,11 +112,12 @@ sliderVerticalWrapper.addEventListener('mousedown', (e) => {
 });
 
 sliderVerticalWrapper.addEventListener('touchstart', function(e){
+  e.stopImmediatePropagation();
   var touchobj = e.changedTouches[0];
   start = touchobj.pageY;
   sliderVerticalWrapper.addEventListener('touchend', function(e){
-    e.stopImmediatePropagation();
     var touchobj = e.changedTouches[0];
+    e.stopImmediatePropagation();
     diff=start-touchobj.pageY;
     if(Math.abs(diff) < 100) return;
     alert(diff);
@@ -128,5 +129,6 @@ sliderVerticalWrapper.addEventListener('touchstart', function(e){
       radioItem[indexFrom + 1].checked = true;
       moveVerticalSlides(indexFrom + 1);
     }
+    sliderVerticalWrapper.ontouchstart = null;
   });
 });
