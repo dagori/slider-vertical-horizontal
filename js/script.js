@@ -113,26 +113,25 @@ sliderVerticalWrapper.addEventListener('mousedown', (e) => {
 
 sliderVerticalWrapper.addEventListener('touchstart', function(e){
   e.preventDefault();
-  e.stopImmediatePropagation();
+  e.stopPropagation();
   start = e.touches[0].pageY;
-  sliderVerticalWrapper.addEventListener('touchmove', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    diff = start-e.touches[0].pageY;
-  });
-  sliderVerticalWrapper.addEventListener('touchend', function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    if(Math.abs(diff) < 100) return;
-    alert(diff);
-    if(diff < 0 && indexFrom !== 0) {
-      radioItem[indexFrom - 1].checked = true;
-      moveVerticalSlides(indexFrom - 1);
-    }
-    if(diff > 0 && indexFrom !== vericalSlides.length - 1) {
-      radioItem[indexFrom + 1].checked = true;
-      moveVerticalSlides(indexFrom + 1);
-    }
-    sliderVerticalWrapper.ontouchstart = null;
-  });
+}
+sliderVerticalWrapper.addEventListener('touchmove', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  diff = start-e.touches[0].pageY;
+});
+sliderVerticalWrapper.addEventListener('touchend', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  if(Math.abs(diff) < 100) return;
+  alert(diff);
+  if(diff < 0 && indexFrom !== 0) {
+    radioItem[indexFrom - 1].checked = true;
+    moveVerticalSlides(indexFrom - 1);
+  }
+  if(diff > 0 && indexFrom !== vericalSlides.length - 1) {
+    radioItem[indexFrom + 1].checked = true;
+    moveVerticalSlides(indexFrom + 1);
+  }
 });
