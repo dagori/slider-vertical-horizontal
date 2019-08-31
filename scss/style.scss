@@ -2,15 +2,7 @@
   font-family: 'GothamPro';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/GothamPro.woff') format("woff");
-  font-display: fallback;
-}
-
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 600;
-  src: url('../fonts/Lato-Medium.woff') format("woff");
+  src: url('../fonts/GothamPro.woff2') format("woff2");
   font-display: fallback;
 }
 
@@ -18,7 +10,7 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/Lato-Regular.woff') format("woff");
+  src: url('../fonts/Lato-Regular.woff2') format("woff2");
   font-display: fallback;
 }
 
@@ -162,7 +154,7 @@ h1, h2, h3, ul, li, a {
   &::before {
     position: absolute;
     width: 200px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', Arial, sans-serif;
     font-weight: 400;
     font-size: 20px;
     color: #0d319c;

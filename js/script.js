@@ -117,8 +117,8 @@ sliderVerticalWrapper.addEventListener('touchstart', function(e){
   sliderVerticalWrapper.addEventListener('touchend', function(e){
     var touchobj = e.changedTouches[0];
     diff=start-touchobj.pageY;
-    e.preventDefault()
     if(Math.abs(diff) < 100) return;
+    alert(diff);
     if(diff < 0 && indexFrom !== 0) {
       radioItem[indexFrom - 1].checked = true;
       moveVerticalSlides(indexFrom - 1);
@@ -127,5 +127,5 @@ sliderVerticalWrapper.addEventListener('touchstart', function(e){
       radioItem[indexFrom + 1].checked = true;
       moveVerticalSlides(indexFrom + 1);
     }
-  }, false);
-}, false);
+  });
+});
