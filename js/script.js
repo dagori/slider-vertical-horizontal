@@ -114,13 +114,11 @@ sliderVerticalWrapper.addEventListener('mousedown', (e) => {
 sliderVerticalWrapper.addEventListener('touchstart', function(e){
   e.preventDefault();
   e.stopImmediatePropagation();
-  var touchobj = e.changedTouches[0];
-  start = touchobj.pageY;
+  start = e.touches[0].pageY;
   sliderVerticalWrapper.addEventListener('touchend', function(e){
-    var touchobj = e.changedTouches[0];
     e.preventDefault();
     e.stopImmediatePropagation();
-    diff=start-touchobj.pageY;
+    diff=start-e.touches[0].pageY;
     if(Math.abs(diff) < 100) return;
     alert(diff);
     if(diff < 0 && indexFrom !== 0) {
