@@ -115,10 +115,14 @@ sliderVerticalWrapper.addEventListener('touchstart', function(e){
   e.preventDefault();
   e.stopImmediatePropagation();
   start = e.touches[0].pageY;
+  sliderVerticalWrapper.addEventListener('touchmove', function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    diff = start-e.touches[0].pageY;
+  });
   sliderVerticalWrapper.addEventListener('touchend', function(e){
     e.preventDefault();
     e.stopImmediatePropagation();
-    diff=start-e.touches[0].pageY;
     if(Math.abs(diff) < 100) return;
     alert(diff);
     if(diff < 0 && indexFrom !== 0) {
