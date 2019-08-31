@@ -1,19 +1,22 @@
 'use strict';
 const slider = document.querySelector('.slider');
-const vertical = document.querySelector('.vertical-container');
-const horizontal = document.querySelector('.horizontal-container');
+const vertical = document.querySelector('.slider__vertical-container');
+const horizontal = document.querySelector('.slider__horizontal-container');
+const sliderVerticalWrapper = document.querySelector('.slider__wrapper');
 const vericalSlides = vertical.querySelectorAll('.slide');
+
 const radio = document.querySelector('.switcher-radio');
 const radioItem = radio.querySelectorAll('input');
+
 const scale = document.querySelector('.switcher-slider__scale');
 const thumb = document.querySelector('.switcher-slider__thumb');
-var currentIndex = 0;
+
 horizontal.style.width = (parseFloat(getComputedStyle(slider).width) * horizontal.children.length) + 'px';
 
 document.ondragstart = function() {
   return false;
 };
-
+//Получить координаты элемента
 function getCoords(elem) {
   var coords = elem.getBoundingClientRect();
   return {
@@ -43,7 +46,7 @@ function moveHorizontalSlides() {
   })();
 }
 
-thumb.onmousedown = function(e) {
+thumb.onmousedown = function(e) {//handleStart, handleEnd
   var thumbPos = getCoords(thumb);
   var scalePos = getCoords(scale);
   var shiftX = e.pageX - thumbPos.left;
@@ -53,69 +56,76 @@ thumb.onmousedown = function(e) {
     thumb.style.left = Math.max(0, Math.min(newPos, scale.offsetWidth - thumb.offsetWidth)) + 'px';
     moveHorizontalSlides();
   }
-  document.onmouseup = function() {
+  document.onmouseup = function(e) {
+    e.stopPropagation(e);
     document.onmousemove = null;
-    thumb.onmouseup = null;
     thumb.style.cursor = 'grab';
   }
 }
 
-// document.onkeypress = function(e) {
-//   if(!thumb.focused) return;
-//
-//   var step = scale.offsetWidth/3;
-//   if(e.keyCode === 37) {
-//
-//   }
-//   if(e.keyCode === 39) {
-//
-//   }
-// }
-
 //Передвинуть вертикальный слайдер
-radio.addEventListener('change', (e) => {
-  var nextRadioIndex = Array.from(radioItem).indexOf(e.target);
+var indexFrom = 0;
+var diff;
+var start;
+var position;
+
+radio.addEventListener('change', ({target}) => {
+  var nextRadioIndex = Array.from(radioItem).indexOf(target);
   moveVerticalSlides(nextRadioIndex);
 });
 
-function moveVerticalSlides(newIndex) {
-  if(!currentIndex) {
+function moveVerticalSlides(indexTo) {
+  if(!indexFrom) {
     vericalSlides[0].classList.remove('next');
     vericalSlides[1].style.backgroundPosition = 'center 20%, center';
   }
-  var position = vericalSlides[currentIndex].offsetHeight * newIndex;
-  vertical.style.transform = `translateY(${-position}px)`;
-  console.log(currentIndex, newIndex);
-  if(currentIndex === 2) {
+  if(indexFrom === 2) {
     vericalSlides[1].style.backgroundPosition = 'center 50%, center';
   }
-  if(!newIndex) {
+  if(!indexTo) {
     vericalSlides[0].classList.add('next');
   }
-  currentIndex = newIndex;
+  position = vericalSlides[indexFrom].offsetHeight * indexTo;
+  vertical.style.transform = `translateY(${-position}px)`;
+
+  var text = 'было: ' + indexFrom + ', видим: ' + indexTo;
+  document.querySelector('button').textContent = document.querySelector('button').textContent + "  " + text;
+  indexFrom = indexTo;
 };
 
-vertical.addEventListener('mousedown', (e) => {
-  var slide = e.target.closest('.slide');
-  if(!slide) return;
-  var slideIndex = Array.from(vericalSlides).indexOf(slide);
-  var diff;
-  var start = e.pageY;
-  vertical.addEventListener('mousemove', (e) => {
+sliderVerticalWrapper.addEventListener('mousedown', (e) => {
+  start = e.pageY;
+  sliderVerticalWrapper.addEventListener('mouseup', (e) => {
+    e.stopImmediatePropagation();
     diff = start - e.pageY;
     if(Math.abs(diff) < 100) return;
-  });
-  vertical.addEventListener('mouseup', () => {
-    if(!slide) return;
-    if(diff < 0 && slideIndex !== 0) {
-      moveVerticalSlides(slideIndex - 1);
-      radioItem[slideIndex - 1].checked = true;
+    if(diff < 0 && indexFrom !== 0) {
+      radioItem[indexFrom - 1].checked = true;
+      moveVerticalSlides(indexFrom - 1);
     }
-    if(diff > 0 && slideIndex !== vericalSlides.length - 1) {
-      moveVerticalSlides(slideIndex + 1);
-      radioItem[slideIndex + 1].checked = true;
+    if(diff > 0 && indexFrom !== vericalSlides.length - 1) {
+      radioItem[indexFrom + 1].checked = true;
+      moveVerticalSlides(indexFrom + 1);
     }
-    vertical.onmousemove = null;
-    vertical.mouseup = null;
+    sliderVerticalWrapper.mouseup = null;
   });
 });
+
+sliderVerticalWrapper.addEventListener('touchstart', function(e){
+  var touchobj = e.changedTouches[0];
+  start = touchobj.pageY;
+  sliderVerticalWrapper.addEventListener('touchend', function(e){
+    var touchobj = e.changedTouches[0];
+    diff=start-touchobj.pageY;
+    e.preventDefault()
+    if(Math.abs(diff) < 100) return;
+    if(diff < 0 && indexFrom !== 0) {
+      radioItem[indexFrom - 1].checked = true;
+      moveVerticalSlides(indexFrom - 1);
+    }
+    if(diff > 0 && indexFrom !== vericalSlides.length - 1) {
+      radioItem[indexFrom + 1].checked = true;
+      moveVerticalSlides(indexFrom + 1);
+    }
+  }, false);
+}, false);

@@ -46,20 +46,18 @@ h1, h2, h3, ul, li, a {
 
 .slider {
   width: 1024px;
-  //height: 768px;
-  height: 100vh;
-//  margin: 50px auto;
+  height: 768px;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
 }
 
-.vertical-container {
+.slider__vertical-container {
+  position: relative;
   transition: transform 0.5s;
   transform: translateY(0);
   background-image: url('../images/background/bg-sea.jpg');
-  position: relative;
 }
-
 //Радиокнопки
 
 .switcher-radio {
@@ -90,6 +88,7 @@ h1, h2, h3, ul, li, a {
 }
 
 //Ползунок
+
 .switcher-slider {
   height: 80px;
   display: flex;
@@ -129,6 +128,7 @@ h1, h2, h3, ul, li, a {
 }
 
 //Вертикальные слайды
+
 .next {
   position: relative;
 }
@@ -147,8 +147,7 @@ h1, h2, h3, ul, li, a {
 }
 
 .slide {
-//  height: 768px;
-  height: 100vh;
+  height: 768px;
   background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -234,7 +233,7 @@ h1, h2, h3, ul, li, a {
 
 //Горизонтальные слайды
 
-.horizontal-container {
+.slider__horizontal-container {
   display: flex;
   transition: transform 0.5s;
   height: inherit;
