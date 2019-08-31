@@ -112,6 +112,8 @@ sliderVerticalWrapper.addEventListener('mousedown', (e) => {
 });
 
 sliderVerticalWrapper.addEventListener('touchstart', function(e){
+  e.preventDefault();
+  e.stopImmediatePropagation();
   var touchobj = e.changedTouches[0];
   start = touchobj.pageY;
   sliderVerticalWrapper.addEventListener('touchend', function(e){
