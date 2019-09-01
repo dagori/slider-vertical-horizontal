@@ -56,3 +56,16 @@ function mouseupHandler(e) {
   document.onmousemove = null;
   document.removeEventListener('mouseup', mouseupHandler, true);
 }
+
+thumb.ontouchstart = function(e) {
+  var thumbPos = getCoords(thumb);
+  var scalePos = getCoords(scale);
+  var shiftX = e.pageX - thumbPos.left;
+  thumb.style.cursor = 'grabbing';
+  document.ontouchmove = function(e) {
+    var newPos =  e.pageX - scalePos.left - shiftX;
+    thumb.style.left = Math.max(0, Math.min(newPos, scale.offsetWidth - thumb.offsetWidth)) + 'px';
+    moveHorizontalSlides();
+  }
+  document.addEventListener('ontouchend', mouseupHandler, true);
+}
