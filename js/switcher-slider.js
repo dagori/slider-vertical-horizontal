@@ -57,15 +57,20 @@ function mouseupHandler(e) {
   document.removeEventListener('mouseup', mouseupHandler, true);
 }
 
-thumb.ontouchstart = function(e) {
+function touchendHandler(e) {
+  e.stopPropagation(e);
+  document.touchmove = null;
+  document.removeEventListener('touchup', touchendHandler, true);
+}
+
+thumb.addEventListener('touchstart', function(e) {
   var thumbPos = getCoords(thumb);
   var scalePos = getCoords(scale);
-  var shiftX = e.pageX - thumbPos.left;
-  thumb.style.cursor = 'grabbing';
-  document.ontouchmove = function(e) {
-    var newPos =  e.pageX - scalePos.left - shiftX;
+  var shiftX = e.touches[0].pageX - thumbPos.left;
+  document.addEventListener('touchmove', function(e) {
+    var newPos =  e.touches[0].pageX - scalePos.left - shiftX;
     thumb.style.left = Math.max(0, Math.min(newPos, scale.offsetWidth - thumb.offsetWidth)) + 'px';
     moveHorizontalSlides();
-  }
-  document.addEventListener('ontouchend', mouseupHandler, true);
-}
+  });
+  document.addEventListener('touchend', touchendHandler, true);
+});
