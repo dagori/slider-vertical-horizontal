@@ -63,14 +63,19 @@ function touchendHandler(e) {
   document.removeEventListener('touchup', touchendHandler, true);
 }
 
+var thumbpos;
+var scalepos;
+var shiftx;
 thumb.addEventListener('touchstart', function(e) {
-  var thumbPos = getCoords(thumb);
-  var scalePos = getCoords(scale);
-  var shiftX = e.touches[0].pageX - thumbPos.left;
-  document.addEventListener('touchmove', function(e) {
-    var newPos =  e.touches[0].pageX - scalePos.left - shiftX;
-    thumb.style.left = Math.max(0, Math.min(newPos, scale.offsetWidth - thumb.offsetWidth)) + 'px';
-    moveHorizontalSlides();
-  });
-  document.addEventListener('touchend', touchendHandler, true);
+  e.preventDefault();
+  thumbpos = getCoords(thumb);
+  scalepos = getCoords(scale);
+  shiftx = e.touches[0].pageX - thumbpos.left;
+});
+
+thumb.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+  var newPos =  e.touches[0].pageX - scalePos.left - shiftx;
+  thumb.style.left = Math.max(0, Math.min(newPos, scale.offsetWidth - thumb.offsetWidth)) + 'px';
+  moveHorizontalSlides();
 });
