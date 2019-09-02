@@ -33,12 +33,9 @@ function moveVerticalSlides(indexTo) {
   }
   position = vericalSlides[indexFrom].offsetHeight * indexTo;
   vertical.style.transform = `translateY(${-position}px)`;
-
-  var text = 'было: ' + indexFrom + ', видим: ' + indexTo;
-  document.querySelector('button').textContent = document.querySelector('button').textContent + "  " + text;
   indexFrom = indexTo;
 };
-
+// Мышиные
 sliderVerticalWrapper.addEventListener('mousedown', (e) => {
   start = e.pageY;
   sliderVerticalWrapper.addEventListener('mouseup', (e) => {
@@ -56,7 +53,7 @@ sliderVerticalWrapper.addEventListener('mousedown', (e) => {
     sliderVerticalWrapper.mouseup = null;
   });
 });
-
+// Сенсорные
 sliderVerticalWrapper.addEventListener('touchstart', function(e){
   e.preventDefault();
   e.stopPropagation();
@@ -71,7 +68,6 @@ sliderVerticalWrapper.addEventListener('touchend', function(e){
   e.preventDefault();
   e.stopPropagation();
   if(Math.abs(diff) < 100) return;
-  alert(diff);
   if(diff < 0 && indexFrom !== 0) {
     radioItem[indexFrom - 1].checked = true;
     moveVerticalSlides(indexFrom - 1);

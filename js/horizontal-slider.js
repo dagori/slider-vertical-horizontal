@@ -1,3 +1,4 @@
+'use strict';
 const horizontal = document.querySelector('.slider__horizontal-container');
 const scale = document.querySelector('.switcher-slider__scale');
 const thumb = document.querySelector('.switcher-slider__thumb');
@@ -36,7 +37,7 @@ function moveHorizontalSlides() {
     }
   })();
 }
-
+//Мышиные
 thumb.onmousedown = function(e) {
   var thumbPos = getCoords(thumb);
   var scalePos = getCoords(scale);
@@ -56,13 +57,7 @@ function mouseupHandler(e) {
   document.onmousemove = null;
   document.removeEventListener('mouseup', mouseupHandler, true);
 }
-
-function touchendHandler(e) {
-  e.stopPropagation();
-  document.touchmove = null;
-  document.removeEventListener('touchend', touchendHandler, true);
-}
-
+//Сенсорные
 thumb.addEventListener('touchstart', function(e) {
   e.preventDefault();
   e.stopPropagation();
