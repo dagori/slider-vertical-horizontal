@@ -25,6 +25,10 @@ body {
   user-select: none;
 }
 
+html:root*body {
+  background: red;
+}
+
 body * {
   box-sizing: border-box;
 }
