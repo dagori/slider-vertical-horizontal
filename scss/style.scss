@@ -25,10 +25,6 @@ body {
   user-select: none;
 }
 
-body:first-of-type .test {
-  background: red;
-}
-
 body * {
   box-sizing: border-box;
 }
@@ -54,9 +50,11 @@ h1, h2, h3, ul, li, a {
   transform: translateY(0);
   background-image: url('../images/background/bg-sea.webp');
 }
-html:root*body {
-  background: red;
+
+.slider__vertical-container.no-webp {
+  background-image: url('../images/background/bg-sea.jpg');
 }
+
 //Радиокнопки
 
 .switcher-radio {
@@ -145,6 +143,10 @@ html:root*body {
   z-index: 10;
 }
 
+.no-webp.next::before {
+  background-image: url('../images/background/next.png');
+}
+
 .slide {
   height: 768px;
   background-size: contain;
@@ -213,6 +215,10 @@ html:root*body {
   transition: background-position 0.7s linear;
 }
 
+.slide--2.no-webp {
+  background-image: url('../images/background/ice-2.png');
+}
+
 .slide__main-title {
   font-family: 'GothamPro', sans-serif;
   font-weight: 400;
@@ -250,12 +256,24 @@ html:root*body {
   background-image: url('../images/background/ice-1988.webp');
 }
 
+.subslide--1.no-webp {
+  background-image: url('../images/background/ice-1988.png');
+}
+
 .subslide--2 {
   background-image: url('../images/background/ice-2009.webp');
 }
 
+.subslide--2.no-webp {
+  background-image: url('../images/background/ice-2009.png');
+}
+
 .subslide--3 {
   background-image: url('../images/background/ice-2016.webp');
+}
+
+.subslide--3.no-webp {
+  background-image: url('../images/background/ice-2016.png');
 }
 
 .subslide__title {
