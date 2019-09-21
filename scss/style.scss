@@ -25,7 +25,7 @@ body {
   user-select: none;
 }
 
-html:root*.test {
+body:first-of-type .test {
   background: red;
 }
 
